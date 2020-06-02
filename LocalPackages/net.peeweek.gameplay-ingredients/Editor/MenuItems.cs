@@ -9,8 +9,9 @@ namespace GameplayIngredients.Editor
 {
     public static class MenuItems
     {
-        const int kPlayMenuPriority = 160;
-        const int kMenuPriority = 330;
+        public const int kWindowMenuPriority = 100;
+        public const int kPlayMenuPriority = 160;
+        public const int kMenuPriority = 330;
 
         #region PLAY HERE
 
@@ -139,6 +140,29 @@ namespace GameplayIngredients.Editor
         {
             GameplayIngredients.Editor.AssetFactory.CreateAssetInProjectWindow<GameLevel>("", "New Game Level.asset");
         }
+
+        #endregion
+
+        #region HELP
+
+        [MenuItem("Help/Gameplay Ingredients/Documentation")]
+        static void Help()
+        {
+            Application.OpenURL("https://peeweek.readthedocs.io/en/latest/gameplay-ingredients/");
+        }
+
+        [MenuItem("Help/Gameplay Ingredients/GitHub Repository (Issues and Releases)")]
+        static void GitHub()
+        {
+            Application.OpenURL("https://github.com/peeweek/net.peeweek.gameplay-ingredients/");
+        }
+
+        [MenuItem("Help/Gameplay Ingredients/OpenUPM page")]
+        static void OpenUPM()
+        {
+            Application.OpenURL("https://openupm.com/packages/net.peeweek.gameplay-ingredients/");
+        }
+
 
         #endregion
     }

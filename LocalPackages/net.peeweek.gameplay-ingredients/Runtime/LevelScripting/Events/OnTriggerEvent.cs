@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace GameplayIngredients.Events
 {
+    [AdvancedHierarchyIcon("Packages/net.peeweek.gameplay-ingredients/Icons/Events/ic-event-trigger.png")]
     public class OnTriggerEvent : EventBase
     {
         [ReorderableList]
@@ -12,6 +13,7 @@ namespace GameplayIngredients.Events
         public Callable[] onTriggerExit;
 
         public bool OnlyInteractWithTag = true;
+        [EnableIf("OnlyInteractWithTag")]
         public string Tag = "Player";
 
         private void OnTriggerEnter(Collider other)

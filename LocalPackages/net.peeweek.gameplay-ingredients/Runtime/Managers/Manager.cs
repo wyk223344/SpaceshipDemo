@@ -21,11 +21,22 @@ namespace GameplayIngredients
             }
         }
 
+        public static bool Has<T>() where T:Manager
+        {
+            return(s_Managers.ContainsKey(typeof(T)));
+        }
+
         static readonly Type[] kAllManagerTypes = GetAllManagerTypes();
 
+#if UNITY_EDITOR
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+#else
         [RuntimeInitializeOnLoadMethod]
+#endif
         static void AutoCreateAll()
         {
+            s_Managers.Clear();
+
             var exclusionList = GameplayIngredientsSettings.currentSettings.excludedeManagers;
 
             Debug.Log("Initializing all Managers...");
